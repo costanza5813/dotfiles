@@ -1,0 +1,22 @@
+#!/bin/bash
+
+## add new files to this list in
+## lexigraphical order
+declare -a dotfiles=(".bash_aliases"
+                     ".gitconfig"
+                     ".gitignore"
+                     ".rtorrent.rc"
+                     ".tmux.conf"
+                     ".vimrc")
+
+## create soft links to the files if
+## they do not already exist
+for i in "${dotfiles[@]}"
+do
+    if [ -e ~/$i ];
+    then
+        echo "File $i already exists!"
+    else
+        ln -s ~/.dotfiles/$i ~/
+    fi
+done

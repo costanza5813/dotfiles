@@ -1,0 +1,11 @@
+## Vim temp and swap files ##
+*~
+*.swp
+*.swo
+.viminfo
+
+## Emacs lock files ##
+.#*
+
+## Tern port file ##
+.tern-port
