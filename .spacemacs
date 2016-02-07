@@ -268,6 +268,7 @@ layers configuration. You are free to put any user code."
   ;; This helps the magit auto-complete feature work
   (setq
    magit-repository-directories '("~/workspace/www/")
+   vc-follow-symlinks t
   )
 
   (setq-default

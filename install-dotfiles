@@ -10,7 +10,7 @@ declare -a dotfiles=(".bash_aliases"
                      ".spacemacs"
                      ".vimrc")
 
-## create hard links to the files if
+## create sybolic links to the files if
 ## they do not already exist
 for i in "${dotfiles[@]}"
 do
@@ -18,6 +18,6 @@ do
     then
         echo "File $i already exists!"
     else
-        ln $HOME/.dotfiles/$i $HOME/
+        ln -s $HOME/.dotfiles/$i $HOME/
     fi
 done
