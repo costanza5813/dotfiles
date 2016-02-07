@@ -10,14 +10,14 @@ declare -a dotfiles=(".bash_aliases"
                      ".spacemacs"
                      ".vimrc")
 
-## create soft links to the files if
+## create hard links to the files if
 ## they do not already exist
 for i in "${dotfiles[@]}"
 do
-    if [ -e ~/$i ];
+    if [ -e $HOME/$i ];
     then
         echo "File $i already exists!"
     else
-        ln -s ~/.dotfiles/$i ~/
+        ln $HOME/.dotfiles/$i $HOME/
     fi
 done

@@ -22,6 +22,12 @@ set nocompatible
 " when scrolling up down, show at least 5 lines
 set scrolljump=5
 
+" window split navigation
+nmap <silent> <space>k :wincmd k<CR>
+nmap <silent> <space>j :wincmd j<CR>
+nmap <silent> <space>h :wincmd h<CR>
+nmap <silent> <space>l :wincmd l<CR>
+
 " Incremental searching
 set incsearch
 
@@ -37,7 +43,6 @@ set cursorline
 " Needed for Syntax Highlighting and stuff
 filetype on
 filetype plugin on
-syntax enable
 set grepprg=grep\ -nH\ $*
 
 "Cool tab completion stuff
@@ -79,7 +84,7 @@ endif
 "nnoremap <silent> zk O<Esc>
 
 " makes life easy
-inoremap jk <ESC> 
+inoremap jk <ESC>
 
 " insert newline without entering insert mode
 nnoremap <C-J> o<Esc>
@@ -104,9 +109,9 @@ set smartindent
 set magic
 set expandtab
 
-set shiftwidth=4
-set softtabstop=4
-set tabstop=4
+set shiftwidth=2
+set softtabstop=2
+set tabstop=2
 
 
 set backspace=indent,eol,start
@@ -140,3 +145,17 @@ endfunction
 
 nnoremap <leader>a :call ToggleH120()<CR>
 nnoremap <leader>b :call ToggleH80()<CR>
+
+" handle trailing whitespace
+match ErrorMsg '\s\+$'
+
+function! TrimWhiteSpace()
+    %s/\s\+$//e
+endfunction
+
+nnoremap <silent> <leader>rtw :call TrimWhiteSpace()<CR>
+
+autocmd FileType html,javascript autocmd FileWritePre    * :call TrimWhiteSpace()
+autocmd FileType html,javascript autocmd FileAppendPre   * :call TrimWhiteSpace()
+autocmd FileType html,javascript autocmd FilterWritePre  * :call TrimWhiteSpace()
+autocmd FileType html,javascript autocmd BufWritePre     * :call TrimWhiteSpace()

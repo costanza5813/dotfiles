@@ -1,10 +1,12 @@
 [user]
-	name = Kevin Johnson
-	email = kevinjohnsonpublic@gmail.com
+  name = Kevin Johnson
+  email = kevinjohnsonpublic@gmail.com
 [mergetool]
-	keepBackup = false
+  keepBackup = false
 [color]
 	ui = auto
+[push]
+  default = simple
 [core]
-	excludesfile = /home/user/kejohnson/.gitignore
-	editor = vim
+  excludesfile = ~/.gitignore
+  editor = vim

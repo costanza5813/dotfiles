@@ -1,11 +1,11 @@
-## Vim temp and swap files ##
+# exclude vim temp and swap files
 *~
 *.swp
 *.swo
-.viminfo
 
-## Emacs lock files ##
+.tern-port
+
+# exclude emacs lock files
 .#*
 
-## Tern port file ##
-.tern-port
+

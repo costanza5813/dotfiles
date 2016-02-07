@@ -23,7 +23,10 @@ values."
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
+     angular
      auto-completion
+     emacs-lisp
+     eyebrowse
      better-defaults
      emacs-lisp
      git
@@ -31,6 +34,7 @@ values."
      javascript
      markdown
      org
+     python
      syntax-checking
      version-control
      )
@@ -93,7 +97,8 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(spacemacs-dark
+   dotspacemacs-themes '(wombat
+                         spacemacs-dark
                          spacemacs-light
                          solarized-light
                          solarized-dark
@@ -196,7 +201,7 @@ values."
    ;; Transparency can be toggled through `toggle-transparency'. (default 90)
    dotspacemacs-inactive-transparency 90
    ;; If non nil unicode symbols are displayed in the mode line. (default t)
-   dotspacemacs-mode-line-unicode-symbols t
+   dotspacemacs-mode-line-unicode-symbols nil
    ;; If non nil smooth scrolling (native-scrolling) is enabled. Smooth
    ;; scrolling overrides the default behavior of Emacs which recenters the
    ;; point when it reaches the top or bottom of the screen. (default t)
@@ -242,7 +247,54 @@ in `dotspacemacs/user-config'."
   "Configuration function for user code.
 This function is called at the very end of Spacemacs initialization after
 layers configuration. You are free to put any user code."
+  ;; display line numbers in prog-mode-hook only
+  (add-hook 'prog-mode-hook 'linum-mode)
+
+  ;; (global-hl-line-mode 1)
+  (set-face-background 'highlight "#222")
+  (set-face-foreground 'highlight nil)
+  ;; don't underline the cursor line
+  (set-face-underline-p 'highlight nil)
+
+  ;; dummy
+  (defun silence()
+    (interactive))
+
+  ;; don't jump the cursor around in the window on clicking
+  (define-key evil-motion-state-map [down-mouse-1] 'silence)
+  ;; also avoid any '<mouse-1> is undefined' when setting to 'undefined
+  (define-key evil-motion-state-map [mouse-1] 'silence)
+
+  ;; This helps the magit auto-complete feature work
+  (setq
+   magit-repository-directories '("~/workspace/www/")
+  )
+
+  (setq-default
+   evil-search-highlight-persist nil
+   global-evil-search-highlight-persist nil
+   truncate-lines t
+   indent-tabs-mode nil
+   )
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" default)))
+ '(magit-fetch-arguments (quote ("--prune")))
+ '(magit-log-arguments (quote ("--graph" "--color" "--decorate" "-n50")))
+ '(powerline-default-separator (quote utf-8)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
+ '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
