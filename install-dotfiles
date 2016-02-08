@@ -3,6 +3,7 @@
 ## add new files to this list in
 ## lexigraphical order
 declare -a dotfiles=(".bash_aliases"
+                     ".curlrc"
                      ".gitconfig"
                      ".gitignore"
                      ".rtorrent.rc"
