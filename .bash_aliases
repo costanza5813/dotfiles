@@ -7,7 +7,7 @@ alias tmuxi='tmux attach -d -t irssi'
 alias tmuxw='tmux attach -d -t workspace'
 
 # less
-alias lessr='less -R'
+alias less='less -R'
 
 # grep
 alias grep='grep --color=always -n -C 1'

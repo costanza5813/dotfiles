@@ -23,20 +23,41 @@ values."
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     angular
+     angularjs
      auto-completion
+     (c-c++ :variables
+            c-c++-default-mode-for-headers 'c++-mode)
+     command-log
+     cscope
      emacs-lisp
+     erc
+     evernote
+     evil-cleverparens
      eyebrowse
      better-defaults
      emacs-lisp
      git
+     grunt
      html
      javascript
+     latex
      markdown
      org
+     perforce
      python
+     ;; ruby
+     ;; rust
+     semantic
+     (shell :variables
+            shell-default-shell 'ansi-term
+            shell-default-term-shell "/bin/bash")
+     shell-scripts
+     sql
      syntax-checking
+     themes-megapack
+     theming
      version-control
+     vimscript
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -241,12 +262,20 @@ values."
 It is called immediately after `dotspacemacs/init'.  You are free to put almost
 any user code here.  The exception is org related code, which should be placed
 in `dotspacemacs/user-config'."
+
+  ;; Set sh-mode to apply to other bash scripts
+  (dolist (pattern '(".profile-user\\'"
+                     ".work_aliases\\'"))
+    (add-to-list 'auto-mode-alist (cons pattern 'sh-mode)))
   )
 
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
 This function is called at the very end of Spacemacs initialization after
 layers configuration. You are free to put any user code."
+  ;; latex previewing
+  (add-hook 'doc-view-mode-hook 'auto-revert-mode)
+
   ;; display line numbers in prog-mode-hook only
   (add-hook 'prog-mode-hook 'linum-mode)
 
@@ -277,6 +306,13 @@ layers configuration. You are free to put any user code."
    truncate-lines t
    indent-tabs-mode nil
    )
+
+  (spacemacs/set-leader-keys
+    "W." 'spacemacs/workspaces-micro-state
+    "W1" 'spacemacs//workspaces-eyebrowse-switch-to-window-config-1-1
+    "W2" 'spacemacs//workspaces-eyebrowse-switch-to-window-config-2-2
+    "W3" 'spacemacs//workspaces-eyebrowse-switch-to-window-config-3-3
+    "W4" 'spacemacs//workspaces-eyebrowse-switch-to-window-config-4-4)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will

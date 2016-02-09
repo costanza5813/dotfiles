@@ -15,10 +15,19 @@ declare -a dotfiles=(".bash_aliases"
 ## they do not already exist
 for i in "${dotfiles[@]}"
 do
-    if [ -e $HOME/$i ];
-    then
-        echo "File $i already exists!"
-    else
-        ln -s $HOME/.dotfiles/$i $HOME/
-    fi
+  ln -s $HOME/.dotfiles/$i $HOME/
 done
+
+## handle non-standard configurations and
+## directories here
+
+## .vim directory
+if [ ! -d $HOME/.vim ];
+then
+  mkdir $HOME/.vim
+fi
+
+ln -s $HOME/.dotfiles/.vim/colors $HOME/.vim/
+
+## .emacs.d directory
+ln -s $HOME/.dotfiles/.emacs.d/private $HOME/.emacs.d/
