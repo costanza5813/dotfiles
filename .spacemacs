@@ -63,7 +63,10 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages
+   '(
+     jscs
+    )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
@@ -273,11 +276,35 @@ in `dotspacemacs/user-config'."
   "Configuration function for user code.
 This function is called at the very end of Spacemacs initialization after
 layers configuration. You are free to put any user code."
+  (setq-default evil-escape-key-sequence "<ESC>")
   ;; latex previewing
   (add-hook 'doc-view-mode-hook 'auto-revert-mode)
 
   ;; display line numbers in prog-mode-hook only
   (add-hook 'prog-mode-hook 'linum-mode)
+
+  ;; treat '_' as word character
+  (add-hook 'prog-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
+
+  (eval-after-load 'flycheck
+    '(progn
+       (setq flycheck-gcc-include-path (list "/home/dev/fonix/online/qa/src/"))
+       (setq flycheck-c/c++-gcc-executable "/home/user/kejohnson/pkg/gcc49/bin/gcc")))
+
+  ;; ignore these directories when in a project
+  (eval-after-load 'projectile
+    '(progn
+       (add-to-list 'projectile-globally-ignored-directories ".stage")
+       (add-to-list 'projectile-globally-ignored-directories "node_modules")))
+  (eval-after-load 'grep
+    '(progn
+       (add-to-list 'grep-find-ignored-directories ".stage")
+       (add-to-list 'grep-find-ignored-directories ".tmp")
+       (add-to-list 'grep-find-ignored-directories "bower_components")
+       (add-to-list 'grep-find-ignored-directories "coverage")
+       (add-to-list 'grep-find-ignored-directories "dist")
+       (add-to-list 'grep-find-ignored-directories "docs")
+       (add-to-list 'grep-find-ignored-directories "node_modules")))
 
   ;; (global-hl-line-mode 1)
   (set-face-background 'highlight "#222")
@@ -298,6 +325,7 @@ layers configuration. You are free to put any user code."
   (setq
    magit-repository-directories '("~/workspace/www/")
    vc-follow-symlinks t
+   helm-buffer-max-length 40
   )
 
   (setq-default
@@ -305,14 +333,23 @@ layers configuration. You are free to put any user code."
    global-evil-search-highlight-persist nil
    truncate-lines t
    indent-tabs-mode nil
+   evil-escape-delay 0.0
    )
 
-  (spacemacs/set-leader-keys
-    "W." 'spacemacs/workspaces-micro-state
-    "W1" 'spacemacs//workspaces-eyebrowse-switch-to-window-config-1-1
-    "W2" 'spacemacs//workspaces-eyebrowse-switch-to-window-config-2-2
-    "W3" 'spacemacs//workspaces-eyebrowse-switch-to-window-config-3-3
-    "W4" 'spacemacs//workspaces-eyebrowse-switch-to-window-config-4-4)
+  (spacemacs/set-leader-keys "wx" kill-buffer-and-window)
+
+  ;; (defun evil-magit-add-ex-cmds ()
+  ;;   (evil-ex-define-cmd "wq" 'with-editor-finish)
+  ;;   (evil-ex-define-cmd "q[uit]"  'with-editor-cancel))
+ 
+  ;; (defun evil-magit-remove-ex-cmds ()
+  ;;   (evil-ex-define-cmd "wq" 'evil-save-and-close)
+  ;;   (evil-ex-define-cmd "q[uit]"  'evil-quit))
+
+  ;; (add-hook 'with-editor-mode-hook 'evil-magit-add-ex-cmds)
+  ;; (add-hook 'with-editor-pre-cancel-hook 'evil-magit-remove-ex-cmds)
+  ;; (add-hook 'with-editor-pre-finish-hook 'evil-magit-remove-ex-cmds)
+
   )
 
 ;; Do not write anything past this comment. This is where Emacs will

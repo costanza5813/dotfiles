@@ -29,12 +29,11 @@
 
 ;;; Code:
 
-(defconst angularjs-packages
-  '(angularjs-mode))
+(defconst angularjs-packages '(angular-mode))
 
-(defun angularjs/init-angularjs-mode ()
-  (use-package angularjs-mode)
-  (add-to-list 'auto-mode-alist '("\\.js\\'" . angularjs-mode)))
+(defun angularjs/init-angular-mode ()
+  (use-package angular-mode)
+  (add-to-list 'auto-mode-alist '("\\.js\\'" . angular-mode)))
 
 
 ;;; packages.el ends here

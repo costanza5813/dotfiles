@@ -4,6 +4,7 @@
 ## lexigraphical order
 declare -a dotfiles=(".bash_aliases"
                      ".curlrc"
+                     ".gdbinit"
                      ".gitconfig"
                      ".gitignore"
                      ".rtorrent.rc"

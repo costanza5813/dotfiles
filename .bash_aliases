@@ -1,5 +1,5 @@
 # re-run login configuration
-alias ssrc='cd ~ && source ~/.profile && cd -'
+alias ssrc='pushd ~ > /dev/null && source ~/.profile && popd > /dev/null'
 
 # tmux
 alias tmuxa='tmux attach -d'
@@ -18,7 +18,7 @@ alias gitbd='git branch -d'
 alias gitc='git checkout'
 alias gitcb='git checkout -b'
 alias gitcm='git checkout master'
-alias gitl='git log'
+alias gitl='git log -n 5'
 alias gitpum='git pull upstream master'
 alias gitpom='git push origin master'
 alias gits='git status'
