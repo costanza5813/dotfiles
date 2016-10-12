@@ -172,8 +172,8 @@ document prints
 Print string.
 end
 
-set confirm off
-set verbose off
+#set confirm off
+#set verbose off
 set prompt \033[31mgdb$ \033[0m
 
 set output-radix 0x10
@@ -183,7 +183,7 @@ set input-radix 0x10
 set height 0
 set width 0
 
- Display instructions in Intel format
+# Display instructions in Intel format
 set disassembly-flavor intel
 
 set $SHOW_CONTEXT = 1
@@ -203,9 +203,9 @@ set $SHOWSTACK = 0
 set $SHOWDATAWIN = 0
 
 
- __________________end gdb options_________________
+# __________________end gdb options_________________
 
- ______________window size control___________
+# ______________window size control___________
 define contextsize-stack
     if $argc != 1
         help contextsize-stack
