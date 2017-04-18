@@ -1,6 +1,8 @@
 # re-run login configuration
 alias ssrc='pushd ~ > /dev/null && source ~/.profile && popd > /dev/null'
 
+alias sl='ls'
+
 # tmux
 alias tmuxa='tmux attach -d'
 alias tmuxi='tmux attach -d -t irssi'
@@ -25,6 +27,9 @@ alias gits='git status'
 
 # irssi
 alias irssi='TERM=screen-256color irssi'
+
+alias rsync='rsync -avh --progress --partial-dir=/home/kevin/media/.partial-transfers/'
+alias imdbtool='python /home/kevin/.src/imdbtool.py'
 
 # Alias definitions specific to work.
 # Place in the file $HOME/.work_aliases
