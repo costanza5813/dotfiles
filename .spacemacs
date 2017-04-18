@@ -23,7 +23,6 @@ values."
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     angularjs
      auto-completion
      (c-c++ :variables
             c-c++-default-mode-for-headers 'c++-mode)
@@ -33,11 +32,9 @@ values."
      erc
      evernote
      evil-cleverparens
-     eyebrowse
      better-defaults
      emacs-lisp
      git
-     grunt
      html
      javascript
      latex
@@ -335,8 +332,6 @@ layers configuration. You are free to put any user code."
    indent-tabs-mode nil
    evil-escape-delay 0.0
    )
-
-  (spacemacs/set-leader-keys "wx" kill-buffer-and-window)
 
   ;; (defun evil-magit-add-ex-cmds ()
   ;;   (evil-ex-define-cmd "wq" 'with-editor-finish)

@@ -194,9 +194,9 @@ set $CONTEXTSIZE_DATA  = 8
 set $CONTEXTSIZE_CODE  = 8
 
 # set to 0 to remove display of objectivec messages (default is 1)
-set $SHOWOBJECTIVEC = 1
+set $SHOWOBJECTIVEC = 0
 # set to 0 to remove display of cpu registers (default is 1)
-set $SHOWCPUREGISTERS = 1
+set $SHOWCPUREGISTERS = 0
 # set to 1 to enable display of stack (default is 0)
 set $SHOWSTACK = 0
 # set to 1 to enable display of data window (default is 0)
