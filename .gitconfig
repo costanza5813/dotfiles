@@ -1,12 +1,25 @@
 [user]
-  name = Kevin Johnson
-  email = kevinjohnsonpublic@gmail.com
-[mergetool]
-  keepBackup = false
-[color]
-	ui = auto
-[push]
-	default = matching
+	name = Kevin Johnson
+	email = kejohnson@factset.com
 [core]
-  excludesfile = ~/.gitignore
-  editor = vim
+	editor = vim
+	excludesfile = ~/.gitignore
+	attributesfile = ~/.gitattributes
+	whitespace = cr-at-eol
+	autocrlf = false
+	eol = lf
+[color]
+  diff = auto
+  status = auto
+  branch = auto
+  interactive = auto
+  ui = true
+  pager = true
+[color "status"]
+  added = green
+  changed = red bold
+  untracked = magenta bold
+[color "branch"]
+  remote = yellow
+[url "git@github.factset.com:"]
+	insteadOf = https://github.factset.com/

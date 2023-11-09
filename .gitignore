@@ -1,12 +1,5 @@
-# exclude vim temp and swap files
-*~
-*.swp
-*.swo
+# emacs project specific settings
+.dir-locals.el
 
-.tern-port
-
-# exclude emacs lock files
-.#*
-
-# ignore private symlink
-private
+*.log
+.DS_Store

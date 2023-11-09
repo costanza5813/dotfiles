@@ -20,10 +20,12 @@ alias gitbd='git branch -d'
 alias gitc='git checkout'
 alias gitcb='git checkout -b'
 alias gitcm='git checkout master'
-alias gitl='git log -n 5'
+alias gitl='git log --pretty=format:"%C(yellow)%h %Cblue%>(12)%ad %Cgreen%<(7)%aN%Cred%d %Creset%s" --date=relative -n 40'
 alias gitpum='git pull upstream master'
 alias gitpom='git push origin master'
 alias gits='git status'
+
+alias guf='git pull upstream master && git push origin master'
 
 # irssi
 alias irssi='TERM=screen-256color irssi'
